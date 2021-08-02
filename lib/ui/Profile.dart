@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+import 'package:upbase_limited/providers/Auth.dart';
+
 import 'package:upbase_limited/ui/forgottenpassword.dart';
 import 'package:upbase_limited/ui/login.dart';
 import 'package:upbase_limited/ui/otp.dart';
@@ -34,8 +35,8 @@ class _ProfileState extends State<Profile> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    ProfileProvider acct = Provider.of<ProfileProvider>(context, listen: false);
-    acct.getprofile(ProfileProvider().patient.phone);
+    AuthProvider acct = Provider.of<AuthProvider>(context, listen: false);
+    acct.getProfile(acct.patient.phone);
   }
 
   @override
@@ -43,9 +44,8 @@ class _ProfileState extends State<Profile> {
     final firstNameField = TextFormField(
       autofocus: false,
       onSaved: (value) => _firstName = value,
-      initialValue: Provider.of<ProfileProvider>(context, listen: false)
-          .patient
-          .firstname,
+      initialValue:
+          Provider.of<AuthProvider>(context, listen: false).patient.firstname,
       decoration: buildInputDecoration("First Name", Icons.people_alt),
     );
 
@@ -53,7 +53,7 @@ class _ProfileState extends State<Profile> {
       autofocus: false,
       onSaved: (value) => _lastName = value,
       initialValue:
-          Provider.of<ProfileProvider>(context, listen: false).patient.lastname,
+          Provider.of<AuthProvider>(context, listen: false).patient.lastname,
       decoration: buildInputDecoration("Last Name", Icons.people),
     );
 
@@ -68,7 +68,7 @@ class _ProfileState extends State<Profile> {
       autofocus: false,
       // obscureText: true,
       initialValue:
-          Provider.of<ProfileProvider>(context, listen: false).patient.phone,
+          Provider.of<AuthProvider>(context, listen: false).patient.phone,
       validator: (value) =>
           value.isEmpty ? "Please enter a Valid Phone Number" : null,
       onSaved: (value) => _phoneNumber = value,
@@ -93,7 +93,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Provider.of<ProfileProvider>(context, listen: true).patient ==
+          child: Provider.of<AuthProvider>(context, listen: true).patient ==
                   null
               ? Center(
                   child: Padding(
@@ -166,18 +166,18 @@ class _ProfileState extends State<Profile> {
                                   child: Center(
                                     child: Column(
                                       children: [
-                                        Provider.of<ProfileProvider>(context,
+                                        Provider.of<AuthProvider>(context,
                                                             listen: false)
                                                         .patient
                                                         .dp ==
                                                     'null' ||
-                                                Provider.of<ProfileProvider>(
+                                                Provider.of<AuthProvider>(
                                                             context,
                                                             listen: false)
                                                         .patient
                                                         .dp ==
                                                     '' ||
-                                                Provider.of<ProfileProvider>(
+                                                Provider.of<AuthProvider>(
                                                             context,
                                                             listen: false)
                                                         .patient
@@ -214,7 +214,7 @@ class _ProfileState extends State<Profile> {
                                                                   bottom: 25),
                                                           child: Center(
                                                             child: Text(
-                                                              "${Provider.of<ProfileProvider>(context, listen: false).patient.lastname[0].toUpperCase()}",
+                                                              "${Provider.of<AuthProvider>(context, listen: false).patient.lastname[0].toUpperCase()}",
                                                               style: TextStyle(
                                                                   fontSize: 35),
                                                             ),
@@ -244,7 +244,7 @@ class _ProfileState extends State<Profile> {
                                                               50.0),
                                                       child: Image.file(
                                                         File(Provider.of<
-                                                                    ProfileProvider>(
+                                                                    AuthProvider>(
                                                                 context,
                                                                 listen: false)
                                                             .patient
@@ -404,9 +404,8 @@ class _ProfileState extends State<Profile> {
                                                   form.save();
                                                   FocusScope.of(context)
                                                       .unfocus();
-                                                  ProfileProvider acct =
-                                                      Provider.of<
-                                                              ProfileProvider>(
+                                                  AuthProvider acct =
+                                                      Provider.of<AuthProvider>(
                                                           context,
                                                           listen: false);
 
@@ -474,7 +473,7 @@ class _ProfileState extends State<Profile> {
                                                     const EdgeInsets.all(12),
                                                 child: Center(
                                                   child: Provider.of<
-                                                                  ProfileProvider>(
+                                                                  AuthProvider>(
                                                               context,
                                                               listen: true)
                                                           .isloading

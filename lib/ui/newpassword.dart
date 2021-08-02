@@ -131,11 +131,21 @@ class _NewpasswordState extends State<Newpassword> {
                                       FocusScope.of(context).unfocus();
                                       AuthProvider auth =
                                           Provider.of<AuthProvider>(context,
-                                              listen: true);
+                                              listen: false);
 
                                       var details =
                                           await auth.resetpassword(_password);
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (BuildContext context) =>
+                                      //             Login()));
                                       if (details['status'] == "Success") {
+                                        await Flushbar(
+                                          title: details['status'],
+                                          message: details["message"],
+                                          duration: Duration(seconds: 3),
+                                        ).show(context);
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(

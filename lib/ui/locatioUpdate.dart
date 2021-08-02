@@ -1,4 +1,5 @@
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+import 'package:upbase_limited/providers/Auth.dart';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,8 @@ class _LocationUpdateState extends State<LocationUpdate> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    ProfileProvider acct = Provider.of<ProfileProvider>(context, listen: false);
-    acct.getprofile(ProfileProvider().patient.phone);
+    AuthProvider acct = Provider.of<AuthProvider>(context, listen: false);
+    acct.getProfile(acct.patient.phone);
   }
 
   int counter = 0;
@@ -38,15 +39,14 @@ class _LocationUpdateState extends State<LocationUpdate> {
     if (counter == 0) {
       counter++;
       _address.text =
-          Provider.of<ProfileProvider>(context, listen: false).patient.address;
+          Provider.of<AuthProvider>(context, listen: false).patient.address;
 
       _state.text =
-          Provider.of<ProfileProvider>(context, listen: false).patient.state;
-      _lga.text =
-          Provider.of<ProfileProvider>(context, listen: false).patient.lga;
+          Provider.of<AuthProvider>(context, listen: false).patient.state;
+      _lga.text = Provider.of<AuthProvider>(context, listen: false).patient.lga;
 
       _country.text =
-          Provider.of<ProfileProvider>(context, listen: false).patient.country;
+          Provider.of<AuthProvider>(context, listen: false).patient.country;
     }
   }
 
@@ -198,7 +198,7 @@ class _LocationUpdateState extends State<LocationUpdate> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Provider.of<ProfileProvider>(context, listen: true).patient ==
+          child: Provider.of<AuthProvider>(context, listen: true).patient ==
                   null
               ? Center(
                   child: Padding(
@@ -390,7 +390,7 @@ class _LocationUpdateState extends State<LocationUpdate> {
                                             RaisedButton(
                                               elevation: 0,
                                               onPressed: () async {
-                                                if (Provider.of<ProfileProvider>(
+                                                if (Provider.of<AuthProvider>(
                                                             context,
                                                             listen: false)
                                                         .patient
@@ -410,9 +410,8 @@ class _LocationUpdateState extends State<LocationUpdate> {
                                                     form.save();
                                                     FocusScope.of(context)
                                                         .unfocus();
-                                                    ProfileProvider auth =
-                                                        Provider.of<
-                                                                ProfileProvider>(
+                                                    AuthProvider auth = Provider
+                                                        .of<AuthProvider>(
                                                             context,
                                                             listen: false);
 
@@ -481,7 +480,7 @@ class _LocationUpdateState extends State<LocationUpdate> {
                                                     const EdgeInsets.all(12),
                                                 child: Center(
                                                   child: Provider.of<
-                                                                  ProfileProvider>(
+                                                                  AuthProvider>(
                                                               context,
                                                               listen: true)
                                                           .isloading

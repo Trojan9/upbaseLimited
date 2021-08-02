@@ -1,5 +1,5 @@
 import 'package:upbase_limited/providers/Auth.dart';
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

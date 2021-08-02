@@ -1,4 +1,5 @@
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+import 'package:upbase_limited/providers/Auth.dart';
+
 import 'package:upbase_limited/ui/location.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,8 +32,8 @@ class _AboutyouUpdateState extends State<AboutyouUpdate> {
     super.initState();
     _showPersBottomSheetCallBack = _showBottomSheet;
     _showPersBottomSheetCallBack2 = _showBottomSheet2;
-    ProfileProvider acct = Provider.of<ProfileProvider>(context, listen: false);
-    acct.getprofile(ProfileProvider().patient.phone);
+    AuthProvider acct = Provider.of<AuthProvider>(context, listen: false);
+    acct.getProfile(acct.patient.phone);
   }
 
   int counter = 0;
@@ -43,17 +44,17 @@ class _AboutyouUpdateState extends State<AboutyouUpdate> {
     super.didChangeDependencies();
     if (counter == 0) {
       counter++;
-      _dob.text = Provider.of<ProfileProvider>(context, listen: false)
+      _dob.text = Provider.of<AuthProvider>(context, listen: false)
           .patient
           .date_of_birth;
 
-      _languagepref.text = Provider.of<ProfileProvider>(context, listen: false)
+      _languagepref.text = Provider.of<AuthProvider>(context, listen: false)
           .patient
           .preferredlang;
       _phoneNumber.text =
-          Provider.of<ProfileProvider>(context, listen: false).patient.phone;
+          Provider.of<AuthProvider>(context, listen: false).patient.phone;
       _pregnancymonths.text =
-          Provider.of<ProfileProvider>(context, listen: false).patient.state;
+          Provider.of<AuthProvider>(context, listen: false).patient.state;
       // _password.text =
       //     Provider.of<ProfileProvider>(context, listen: false).doctor.lga;
       // specialitytext.text = Provider.of<ProfileProvider>(context, listen: false)
@@ -291,7 +292,7 @@ class _AboutyouUpdateState extends State<AboutyouUpdate> {
       key: _scaffoldKey,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Provider.of<ProfileProvider>(context, listen: true).patient ==
+          child: Provider.of<AuthProvider>(context, listen: true).patient ==
                   null
               ? Center(
                   child: Padding(
@@ -600,7 +601,7 @@ class _AboutyouUpdateState extends State<AboutyouUpdate> {
                                             RaisedButton(
                                               elevation: 0,
                                               onPressed: () async {
-                                                if (Provider.of<ProfileProvider>(
+                                                if (Provider.of<AuthProvider>(
                                                             context,
                                                             listen: false)
                                                         .patient
@@ -620,9 +621,8 @@ class _AboutyouUpdateState extends State<AboutyouUpdate> {
                                                     form.save();
                                                     FocusScope.of(context)
                                                         .unfocus();
-                                                    ProfileProvider auth =
-                                                        Provider.of<
-                                                                ProfileProvider>(
+                                                    AuthProvider auth = Provider
+                                                        .of<AuthProvider>(
                                                             context,
                                                             listen: false);
 
@@ -692,7 +692,7 @@ class _AboutyouUpdateState extends State<AboutyouUpdate> {
                                                     const EdgeInsets.all(12),
                                                 child: Center(
                                                   child: Provider.of<
-                                                                  ProfileProvider>(
+                                                                  AuthProvider>(
                                                               context,
                                                               listen: true)
                                                           .isloading

@@ -1,4 +1,5 @@
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+import 'package:upbase_limited/providers/Auth.dart';
+
 import 'package:upbase_limited/providers/setpagedrawer.dart';
 import 'package:upbase_limited/ui/Account.dart';
 import 'package:upbase_limited/ui/Profile.dart';
@@ -76,17 +77,16 @@ class SideDrawer extends StatelessWidget {
                           //       ),
                           child: Row(
                             children: [
-                              Provider.of<ProfileProvider>(context,
-                                                  listen: false)
+                              Provider.of<AuthProvider>(context, listen: false)
                                               .patient
                                               .dp ==
                                           'null' ||
-                                      Provider.of<ProfileProvider>(context,
+                                      Provider.of<AuthProvider>(context,
                                                   listen: false)
                                               .patient
                                               .dp ==
                                           '' ||
-                                      Provider.of<ProfileProvider>(context,
+                                      Provider.of<AuthProvider>(context,
                                                   listen: false)
                                               .patient
                                               .dp ==
@@ -110,7 +110,7 @@ class SideDrawer extends StatelessWidget {
                                                 top: 25.0, bottom: 25),
                                             child: Center(
                                               child: Text(
-                                                "${Provider.of<ProfileProvider>(context, listen: false).patient.lastname[0].toUpperCase()}",
+                                                "${Provider.of<AuthProvider>(context, listen: false).patient.lastname[0].toUpperCase()}",
                                                 style: TextStyle(fontSize: 35),
                                               ),
                                             ),
@@ -123,7 +123,7 @@ class SideDrawer extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(50.0),
                                         child: Image.network(
-                                          Provider.of<ProfileProvider>(context,
+                                          Provider.of<AuthProvider>(context,
                                                   listen: false)
                                               .patient
                                               .dp,

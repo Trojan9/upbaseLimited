@@ -296,6 +296,11 @@ class _SignUpState extends State<SignUp> {
                                           );
                                           print(details);
                                           if (details['status'] == "Success") {
+                                            await Flushbar(
+                                              title: details['status'],
+                                              message: details["message"],
+                                              duration: Duration(seconds: 5),
+                                            ).show(context);
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(

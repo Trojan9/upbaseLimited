@@ -1,4 +1,5 @@
 import 'package:upbase_limited/providers/Auth.dart';
+
 import 'package:upbase_limited/ui/aboutyou.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/gestures.dart';
@@ -128,12 +129,17 @@ class _OtpState extends State<Otp> {
                       elevation: 0,
                       onPressed: () async {
                         final form = formKey.currentState;
+                        AuthProvider auth =
+                            Provider.of<AuthProvider>(context, listen: false);
                         if (currentText != "") {
                           FocusScope.of(context).unfocus();
-                          AuthProvider auth =
-                              Provider.of<AuthProvider>(context, listen: false);
 
                           var details = await auth.verifyotp(currentText);
+                          print(
+                              Provider.of<AuthProvider>(context, listen: false)
+                                  .patient
+                                  .firstname);
+                          print("otp");
                           if (details['status'] == "Success") {
                             Navigator.push(
                                 context,
@@ -148,6 +154,7 @@ class _OtpState extends State<Otp> {
                             ).show(context);
                           }
                         } else {
+                          print(auth.patient.firstname);
                           Flushbar(
                             title: "Invalid form",
                             message: "Please Complete the form properly",

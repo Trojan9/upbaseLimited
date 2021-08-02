@@ -333,7 +333,7 @@ class _LocationState extends State<Location> {
                                                   MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
-                                                          DashBoard()));
+                                                          Account()));
                                             } else {
                                               Flushbar(
                                                 title: details['status'],

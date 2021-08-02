@@ -142,6 +142,11 @@ class _ForgottenpassState extends State<Forgottenpass> {
                                       var details =
                                           await auth.forgotpass(_phoneNumber);
                                       if (details['status'] == "Success") {
+                                        await Flushbar(
+                                          title: details['status'],
+                                          message: details["message"],
+                                          duration: Duration(seconds: 5),
+                                        ).show(context);
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(

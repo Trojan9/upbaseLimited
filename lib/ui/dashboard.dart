@@ -1,7 +1,8 @@
+import 'package:upbase_limited/providers/Auth.dart';
 import 'package:upbase_limited/providers/setpagedrawer.dart';
 import 'package:upbase_limited/ui/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 
@@ -68,8 +69,8 @@ class _DashBoardState extends State<DashBoard> {
   void initState() {
     super.initState();
     Provider.of<Setpageprovider>(context, listen: false).setpage(0);
-    ProfileProvider acct = Provider.of<ProfileProvider>(context, listen: false);
-    acct.getprofile(ProfileProvider().patient.phone);
+    AuthProvider acct = Provider.of<AuthProvider>(context, listen: false);
+    acct.getProfile(acct.patient.phone);
     setState(() {});
     // _pageController.addListener(() {
     //   setState(() {
@@ -126,12 +127,12 @@ class _DashBoardState extends State<DashBoard> {
                               child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                      Provider.of<ProfileProvider>(context,
+                                      Provider.of<AuthProvider>(context,
                                                       listen: true)
                                                   .patient ==
                                               null
                                           ? "Welcome"
-                                          : "Welcome ${Provider.of<ProfileProvider>(context, listen: true).patient.firstname},",
+                                          : "Welcome ${Provider.of<AuthProvider>(context, listen: true).patient.firstname},",
                                       maxLines: 2,
                                       style: TextStyle(
                                         fontSize: 22,

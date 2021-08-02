@@ -1,9 +1,11 @@
-import 'package:upbase_limited/providers/ProfileProvider.dart';
+import 'package:upbase_limited/providers/Auth.dart';
+
 import 'package:upbase_limited/ui/Profile.dart';
 import 'package:upbase_limited/ui/aboutyou.dart';
 import 'package:upbase_limited/ui/aboutyouUpdate.dart';
 import 'package:upbase_limited/ui/drawer.dart';
 import 'package:upbase_limited/ui/locatioUpdate.dart';
+import 'package:upbase_limited/ui/login.dart';
 import 'package:upbase_limited/ui/passwordchange.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,8 +36,8 @@ class _AccountState extends State<Account> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    ProfileProvider acct = Provider.of<ProfileProvider>(context, listen: false);
-    acct.getprofile(ProfileProvider().patient.phone);
+    AuthProvider acct = Provider.of<AuthProvider>(context, listen: false);
+    acct.getProfile(acct.patient.phone);
   }
 
   @override
@@ -66,7 +68,7 @@ class _AccountState extends State<Account> {
                             size: 30,
                           ),
                           onPressed: () async {
-                            scaffoldKey.currentState.openDrawer();
+                            //scaffoldKey.currentState.openDrawer();
                           }),
                     ),
                   ),
@@ -242,6 +244,49 @@ class _AccountState extends State<Account> {
                                         size: 25,
                                       ),
                                       Text("Location"),
+                                    ],
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Colors.black,
+                                    size: 15,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Login()));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(248, 248, 248, 1),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            height: MediaQuery.of(context).size.height / 10,
+                            width: MediaQuery.of(context).size.width,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.logout,
+                                        color: Colors.black,
+                                        size: 25,
+                                      ),
+                                      Text("Log Out"),
                                     ],
                                   ),
                                   Icon(
