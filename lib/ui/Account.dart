@@ -3,7 +3,6 @@ import 'package:upbase_limited/providers/Auth.dart';
 import 'package:upbase_limited/ui/Profile.dart';
 import 'package:upbase_limited/ui/aboutyou.dart';
 import 'package:upbase_limited/ui/aboutyouUpdate.dart';
-import 'package:upbase_limited/ui/drawer.dart';
 import 'package:upbase_limited/ui/locatioUpdate.dart';
 import 'package:upbase_limited/ui/login.dart';
 import 'package:upbase_limited/ui/passwordchange.dart';
@@ -46,7 +45,7 @@ class _AccountState extends State<Account> {
       onWillPop: () => Future.value(false),
       child: Scaffold(
         key: scaffoldKey,
-        drawer: SideDrawer(),
+        // drawer: SideDrawer(),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: SafeArea(

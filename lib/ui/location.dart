@@ -1,7 +1,6 @@
 import 'package:upbase_limited/providers/Auth.dart';
 import 'package:upbase_limited/ui/Account.dart';
 import 'package:upbase_limited/ui/Profile.dart';
-import 'package:upbase_limited/ui/dashboard.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

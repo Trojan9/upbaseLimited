@@ -10,6 +10,26 @@ import 'dart:async';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:provider/provider.dart';
 
+class EmailValidator {
+  static String validate(String value) {
+    String _msg;
+    RegExp regex = new RegExp(
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+    if (value.isEmpty) {
+      _msg = "Your Email is required";
+    } else if (!regex.hasMatch(value)) {
+      _msg = "Please provide a valid emal address";
+    }
+    return _msg;
+  }
+}
+
+class PasswordValidator {
+  static String validate(String value) {
+    return value.isEmpty ? "Please enter password" : null;
+  }
+}
+
 class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
@@ -48,7 +68,7 @@ class _SignUpState extends State<SignUp> {
 
     final emailField = TextFormField(
       autofocus: false,
-      validator: validateEmail,
+      validator: EmailValidator.validate,
       onSaved: (value) => _email = value,
       decoration: buildInputDecoration("Email", Icons.email),
     );
@@ -66,7 +86,7 @@ class _SignUpState extends State<SignUp> {
     final passwordField = TextFormField(
       autofocus: false,
       obscureText: _obscureText,
-      validator: (value) => value.isEmpty ? "Please enter password" : null,
+      validator: PasswordValidator.validate,
       onSaved: (value) => _password = value,
       decoration: buildInputDecoration("Password", Icons.lock),
     );

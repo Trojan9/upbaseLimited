@@ -1,12 +1,7 @@
-import 'package:upbase_limited/ui/appointmentdetails.dart';
-import 'package:upbase_limited/ui/appointmentselectdateandtime.dart';
-import 'package:upbase_limited/ui/bookingSuccess.dart';
-import 'package:upbase_limited/ui/dashboard.dart';
-import 'package:upbase_limited/ui/onboarding.dart';
-import 'package:upbase_limited/ui/pregnancyredalert.dart';
-import 'package:upbase_limited/ui/redAlert.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:upbase_limited/ui/onboarding.dart';
 
 class Splashscreen extends StatefulWidget {
   @override

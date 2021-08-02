@@ -1,5 +1,4 @@
 import 'package:upbase_limited/providers/appointmentprovider.dart';
-import 'package:upbase_limited/ui/bookappointmentselect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -199,11 +198,11 @@ class _DoctorsProfileState extends State<DoctorsProfile> {
                       RaisedButton(
                         elevation: 0,
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      BookAppointmentSelectDate()));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (BuildContext context) =>
+                          //             BookAppointmentSelectDate()));
                         },
                         textColor: Color.fromRGBO(241, 245, 248, 1),
                         //color: Color.fromRGBO(19, 82, 139, 1),

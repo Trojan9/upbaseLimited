@@ -1,5 +1,5 @@
 import 'package:upbase_limited/providers/Auth.dart';
-import 'package:upbase_limited/ui/dashboard.dart';
+import 'package:upbase_limited/ui/Account.dart';
 import 'package:upbase_limited/ui/forgottenpassword.dart';
 import 'package:upbase_limited/ui/otp.dart';
 import 'package:upbase_limited/ui/signup.dart';
@@ -216,7 +216,7 @@ class _LoginState extends State<Login> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (BuildContext context) =>
-                                                  DashBoard()));
+                                                  Account()));
                                     } else {
                                       Flushbar(
                                         title: details['status'],
